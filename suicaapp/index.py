@@ -1,7 +1,19 @@
 from bottle import route, run, template
+import cv2
 
-@route('/api/user/<id:int>/<balance:int>')
-def index(id,balance):
-    return template('<b>ユーザ{{id}}様</b></br></br><b>残高が {{balance}}円です。JR線改札には入れません。チャージしてください。</b>', id=id , balance=balance)
+@route('/api/test1')
+def ring_app():
+    img = cv2.imread("./test1.png")
+    cv2.imshow("Test1", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+@route('/api/test2')
+def ring_app2():
+    img = cv2.imread("./test2.png")
+    cv2.imshow("Test2", img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-run(host='localhost', port=8080)
+run(host='0.0.0.0', port=8080)
+ 
