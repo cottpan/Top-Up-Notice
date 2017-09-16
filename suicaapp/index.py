@@ -1,7 +1,7 @@
-from suicaapp.bottle import route, run, template
+from bottle import route, run, template
 
-@route('/hello/<name>')
-def index(name):
-    return template('<b>Hello {{name}}</b>!', name=name)
+@route('/api/user/<id:int>')
+def index(id):
+    return template('<b>残高が {{id}}円です。JR線改札には入れません。チャージしてください。</b>', id=id)
 
 run(host='localhost', port=8080)
